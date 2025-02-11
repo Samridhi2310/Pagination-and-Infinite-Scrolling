@@ -4,16 +4,19 @@ import RefExample from "./refExample";
 import ViewPort from "./components/IntersectionObservers";
 import DataShow from "./components/InfiniteScrolling";
 import FetchAxios from "./InfiniteScrollingPredefined";
+import DisplayPhotos from "./components/InfiniteScrollingWithToDo";
 
 function App() {
   return (
     <>
-        <Pagination itemsPerPage={10} />
+        {/* <Pagination itemsPerPage={10} /> */}
        {/* <RefExample/> 
           <ViewPort/>   
           <DataShow/>  
            <FetchAxios/> 
          */}
+         <DisplayPhotos/>
+         
     </>
   );
 }
