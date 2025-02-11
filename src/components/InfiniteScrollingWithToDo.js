@@ -6,11 +6,14 @@ export default function DisplayPhotos() {
     const [pageCount, setPageCount] = useState(1);
     const loadingRef = useRef();
     const [lastPage,setLastPage]=useState(false);
+    const isFetching=useRef(false)
 
     // Fetch Data when pageCount updates
     useEffect(() => {
         const fetchPhotos = async () => {
             try {
+                if(isFetching.current)return;
+                isFetching.current=true;
                 const response = await axios.get(`https://jsonplaceholder.typicode.com/todos?_limit=10&_page=${pageCount}`);
                 setToDoData((prevData) => [...prevData, ...response.data]);
                 if(response.data.length===0){
@@ -20,6 +23,9 @@ export default function DisplayPhotos() {
                 }
             } catch (error) {
                 console.error("Error fetching photos:", error);
+            }
+            finally {
+                isFetching.current = false; 
             }
         };
 
